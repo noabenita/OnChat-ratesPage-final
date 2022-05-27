@@ -1,0 +1,94 @@
+﻿@model OnChat.Models.Rates
+
+@{
+    ViewData["Title"] = "Details";
+}
+<h1 class="headlineDetails">Details</h1>
+
+
+<div>
+    <h4 class="ratesDetails">Rates details</h4>
+    <hr />
+    <dl class="row">
+         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Rate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Rate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Feedback)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Feedback)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a  class="back" asp-action="Index">Back to List</a>
+</div>
+
+<style type="text/css">
+    
+    h1.headlineDetails{
+        margin-bottom:2%;
+        color:white;
+        font-size: 450%;
+        font-weight: 700;
+        font-family: "Montserrat", sans-serif;
+        text-decoration: underline;
+    }
+  
+     h4.ratesDetails{
+        margin-bottom:2%;
+        color:white;
+        font-size: 300%;
+        font-weight: 700;
+        font-family: "Montserrat", sans-serif;
+        color:cadetblue;
+    }
+
+    dl.row{
+        margin-bottom:2%;
+        color:white;
+        font-size: 200%;
+        font-weight: 700;
+    }
+
+    input.delButton{
+        font-size: 200%;
+        font-weight: 400;
+        font-family: "Montserrat", sans-serif;
+        background-color:cadetblue;
+        border-color:white;
+         margin-bottom:4%;
+         color:white;
+    }
+
+    a.back{
+        font-size: 150%;
+        font-weight: 300;
+        font-family: "Montserrat", sans-serif;
+        color:white;
+    }
+
+
+</style>

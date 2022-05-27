@@ -1,0 +1,144 @@
+﻿@model IEnumerable<OnChat.Models.Rates>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Index";
+}
+
+
+@functions {
+    float getAvg()
+    {
+        float avg = 0;
+        int counter = 0;
+        @foreach (var item in Model)
+        {
+            counter++;
+            avg += item.Rate;
+
+        }
+        if (counter > 0)
+        {
+            avg = avg / counter;
+        }
+        return avg;
+    }
+}
+
+<h1 class="headline">Rates Page</h1>
+
+<p class="create">
+    <a asp-action="Create" style="color:cadetblue">Create New Rate</a>
+</p>
+<form asp-action="Search">
+    <input class="search" name="query" />
+    <input class="search" type="submit" value="Search" />
+</form>
+<div class="average">
+    Current average rating: @getAvg()
+</div>
+<table class="table" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Feedback)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th> 
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+              <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Feedback)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                <a class="edit" asp-action="Edit" asp-route-name="@item.Name">Edit</a> |
+                <a class="details" asp-action="Details" asp-route-name="@item.Name">Details</a> |
+                <a class="delete" asp-action="Delete" asp-route-name="@item.Name">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<style type="text/css">
+    
+    h1.headline{
+        margin-bottom:2%;
+        color:white;
+        font-size: 550%;
+        font-weight: 700;
+        font-family: "Montserrat", sans-serif;
+        text-decoration: underline;
+    }
+    p.create{
+        margin-bottom:4%;
+        color:white;
+        font-size: 200%;
+        font-weight: 600;
+        font-family: "Montserrat", sans-serif
+    }
+
+    table.table{
+        margin-bottom:4%;
+        border:solid 5px cadetblue;
+        color:black;
+        font-size: 150%;
+        background-color:white;
+        font-family: "Montserrat", sans-serif;
+        margin-top:2%;
+        text-align: center;
+    }
+    
+    div.average{
+         margin-bottom:4%;
+         font-family: "Montserrat", sans-serif;
+         font-size: 150%;
+    }
+
+    input.search{
+       font-size: 150%;
+       font-family: "Montserrat", sans-serif;
+       font-weight: 200;
+    }
+
+    a.edit{
+         font-family: "Montserrat", sans-serif;
+         font-size: 100%;
+         color:cadetblue;
+    }
+     a.details{
+         font-family: "Montserrat", sans-serif;
+         font-size: 100%;
+         color:cadetblue;
+    }
+     a.delete{
+         font-family: "Montserrat", sans-serif;
+         font-size: 100%;
+         color:cadetblue;
+    }
+
+</style>
